@@ -1,10 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
+import '/components/dark_light/dark_light_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'login_page_widget.dart' show LoginPageWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,6 +12,8 @@ import 'package:provider/provider.dart';
 class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // Model for darkLight component.
+  late DarkLightModel darkLightModel;
   // State field(s) for emailAddress-login widget.
   FocusNode? emailAddressLoginFocusNode;
   TextEditingController? emailAddressLoginTextController;
@@ -23,16 +24,16 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   TextEditingController? passwordLoginTextController;
   late bool passwordLoginVisibility;
   String? Function(BuildContext, String?)? passwordLoginTextControllerValidator;
-  // State field(s) for Switch widget.
-  bool? switchValue;
 
   @override
   void initState(BuildContext context) {
+    darkLightModel = createModel(context, () => DarkLightModel());
     passwordLoginVisibility = false;
   }
 
   @override
   void dispose() {
+    darkLightModel.dispose();
     emailAddressLoginFocusNode?.dispose();
     emailAddressLoginTextController?.dispose();
 

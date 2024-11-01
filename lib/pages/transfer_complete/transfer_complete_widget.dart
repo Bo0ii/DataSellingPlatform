@@ -99,7 +99,7 @@ class _TransferCompleteWidgetState extends State<TransferCompleteWidget> {
               child: FFButtonWidget(
                 onPressed: () async {
                   context.pushNamed(
-                    'A-Mywallet-4',
+                    'AB-Mywallet-4',
                     extra: <String, dynamic>{
                       kTransitionInfoKey: TransitionInfo(
                         hasTransition: true,

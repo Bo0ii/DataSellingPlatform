@@ -92,8 +92,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 Brightness.dark))
                               Image.asset(
                                 'assets/images/Untitled_design.png',
-                                width: 112.0,
-                                height: 60.0,
+                                width: 127.0,
+                                height: 72.0,
                                 fit: BoxFit.fitWidth,
                               ),
                           ],
@@ -403,7 +403,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 24.0, 0.0, 24.0),
+                                      0.0, 20.0, 0.0, 15.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
                                       GoRouter.of(context).prepareAuthEvent();
@@ -433,13 +433,9 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         return;
                                       }
 
-                                      await authManager.sendEmailVerification();
-
-                                      await BudgetListRecord.collection
+                                      await UserListRecord.collection
                                           .doc()
-                                          .set(createBudgetListRecordData(
-                                            budgetUser: currentUserReference,
-                                          ));
+                                          .set(createUserListRecordData());
 
                                       context.goNamedAuth('A-CompleteProfile-1',
                                           context.mounted);
@@ -448,7 +444,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                       '5kmjfwsk' /* Create Account */,
                                     ),
                                     options: FFButtonOptions(
-                                      width: 260.0,
+                                      width: 267.0,
                                       height: 50.0,
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
@@ -473,81 +469,184 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   ),
                                 ),
                               ),
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed(
+                                    'loginPage',
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType:
+                                            PageTransitionType.leftToRight,
+                                        duration: Duration(milliseconds: 220),
+                                      ),
+                                    },
+                                  );
+                                },
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        '9ssznj0g' /* Already have an account? */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          18.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          '3twynvfz' /* Login */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.keyboard_arrow_right_rounded,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 24.0,
+                                    ),
+                                  ],
+                                ),
+                              ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.8,
-                                    height: 44.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed(
-                                          'loginPage',
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .leftToRight,
-                                              duration:
-                                                  Duration(milliseconds: 220),
-                                            ),
-                                          },
-                                        );
-                                      },
-                                      child: Row(
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, -1.0),
+                                    child: Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.8,
+                                      height: 44.0,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      child: Column(
                                         mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
                                         children: [
-                                          Icon(
-                                            Icons.arrow_back_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 24.0,
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    4.0, 0.0, 24.0, 0.0),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '3twynvfz' /* Login */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        letterSpacing: 0.0,
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Expanded(
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 15.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'kjhnq0es' /* or create account using : */,
                                                       ),
-                                            ),
-                                          ),
-                                          Text(
-                                            FFLocalizations.of(context).getText(
-                                              '9ssznj0g' /* Already have an account? */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  letterSpacing: 0.0,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Lexend',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ),
                                                 ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              if (Theme.of(context)
+                                                      .brightness ==
+                                                  Brightness.dark)
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 13.0,
+                                                                0.0, 0.0),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        GoRouter.of(context)
+                                                            .prepareAuthEvent();
+                                                        final user =
+                                                            await authManager
+                                                                .signInWithGithub(
+                                                                    context);
+                                                        if (user == null) {
+                                                          return;
+                                                        }
+
+                                                        context.goNamedAuth(
+                                                          'A-CompleteProfile-1',
+                                                          context.mounted,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            kTransitionInfoKey:
+                                                                TransitionInfo(
+                                                              hasTransition:
+                                                                  true,
+                                                              transitionType:
+                                                                  PageTransitionType
+                                                                      .rightToLeft,
+                                                            ),
+                                                          },
+                                                        );
+                                                      },
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child: Image.asset(
+                                                          'assets/images/github-mark-white.png',
+                                                          width: 100.0,
+                                                          height: 43.0,
+                                                          fit: BoxFit.contain,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                            ],
                                           ),
                                         ],
                                       ),
@@ -555,57 +654,59 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   ),
                                 ],
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.0, -1.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 0.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              GoRouter.of(context).prepareAuthEvent();
-                              final user =
-                                  await authManager.signInAnonymously(context);
-                              if (user == null) {
-                                return;
-                              }
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  if (!(Theme.of(context).brightness ==
+                                      Brightness.dark))
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            final user = await authManager
+                                                .signInWithGithub(context);
+                                            if (user == null) {
+                                              return;
+                                            }
 
-                              await BudgetListRecord.collection
-                                  .doc()
-                                  .set(createBudgetListRecordData(
-                                    budgetUser: currentUserReference,
-                                  ));
-
-                              context.goNamedAuth('HomePage', context.mounted);
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              '3ugmx2zp' /* Continue as Guest */,
-                            ),
-                            options: FFButtonOptions(
-                              width: 188.0,
-                              height: 39.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Colors.white,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: Colors.black,
-                                    letterSpacing: 0.0,
-                                  ),
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
+                                            context.goNamedAuth(
+                                              'A-CompleteProfile-1',
+                                              context.mounted,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType
+                                                          .rightToLeft,
+                                                ),
+                                              },
+                                            );
+                                          },
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.asset(
+                                              'assets/images/github-mark.png',
+                                              width: 100.0,
+                                              height: 43.0,
+                                              fit: BoxFit.contain,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                ],
                               ),
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
+                            ],
                           ),
                         ),
                       ),

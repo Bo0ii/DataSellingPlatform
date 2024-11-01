@@ -66,6 +66,16 @@ class UsersRecord extends FirestoreRecord {
   String get userTitle => _userTitle ?? '';
   bool hasUserTitle() => _userTitle != null;
 
+  // "GitHub_id" field.
+  String? _gitHubId;
+  String get gitHubId => _gitHubId ?? '';
+  bool hasGitHubId() => _gitHubId != null;
+
+  // "Confirm_Pass" field.
+  String? _confirmPass;
+  String get confirmPass => _confirmPass ?? '';
+  bool hasConfirmPass() => _confirmPass != null;
+
   void _initializeFields() {
     _displayName = snapshotData['display_name'] as String?;
     _email = snapshotData['email'] as String?;
@@ -77,6 +87,8 @@ class UsersRecord extends FirestoreRecord {
     _photoUrl = snapshotData['photo_url'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _userTitle = snapshotData['userTitle'] as String?;
+    _gitHubId = snapshotData['GitHub_id'] as String?;
+    _confirmPass = snapshotData['Confirm_Pass'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -123,6 +135,8 @@ Map<String, dynamic> createUsersRecordData({
   String? photoUrl,
   DateTime? createdTime,
   String? userTitle,
+  String? gitHubId,
+  String? confirmPass,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -136,6 +150,8 @@ Map<String, dynamic> createUsersRecordData({
       'photo_url': photoUrl,
       'created_time': createdTime,
       'userTitle': userTitle,
+      'GitHub_id': gitHubId,
+      'Confirm_Pass': confirmPass,
     }.withoutNulls,
   );
 
@@ -156,7 +172,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.phoneNumber == e2?.phoneNumber &&
         e1?.photoUrl == e2?.photoUrl &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.userTitle == e2?.userTitle;
+        e1?.userTitle == e2?.userTitle &&
+        e1?.gitHubId == e2?.gitHubId &&
+        e1?.confirmPass == e2?.confirmPass;
   }
 
   @override
@@ -170,7 +188,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.phoneNumber,
         e?.photoUrl,
         e?.createdTime,
-        e?.userTitle
+        e?.userTitle,
+        e?.gitHubId,
+        e?.confirmPass
       ]);
 
   @override

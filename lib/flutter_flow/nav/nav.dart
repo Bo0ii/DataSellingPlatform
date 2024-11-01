@@ -119,11 +119,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => AAddingDeviceFirst3Widget(),
         ),
         FFRoute(
-          name: 'A-Mywallet-4',
-          path: '/aMywallet4',
+          name: 'AB-Mywallet-4',
+          path: '/aBMywallet4',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'A-Mywallet-4')
-              : AMywallet4Widget(),
+              ? NavBarPage(initialPage: 'AB-Mywallet-4')
+              : ABMywallet4Widget(),
         ),
         FFRoute(
           name: 'MY_Budgets',
@@ -144,18 +144,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             userSpent: params.getParam(
               'userSpent',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['users'],
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'MY_profilePage',
-          path: '/mYProfilePage',
-          builder: (context, params) => MYProfilePageWidget(
-            userProfile: params.getParam(
-              'userProfile',
               ParamType.DocumentReference,
               isList: false,
               collectionNamePath: ['users'],
@@ -261,16 +249,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ProfilepageWidget(),
         ),
         FFRoute(
-          name: 'dashboardv2',
-          path: '/dashboardv2',
-          builder: (context, params) => Dashboardv2Widget(),
+          name: 'AB-dashboardv2',
+          path: '/aBDashboardv2',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'AB-dashboardv2')
+              : ABDashboardv2Widget(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
+          name: 'AB-HomePage-5',
+          path: '/aBHomePage5',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'HomePage')
-              : HomePageWidget(),
+              ? NavBarPage(initialPage: 'AB-HomePage-5')
+              : ABHomePage5Widget(),
         ),
         FFRoute(
           name: 'MY_profilePageCopy',

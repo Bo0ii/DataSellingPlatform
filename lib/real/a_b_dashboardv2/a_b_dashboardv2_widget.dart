@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -5,25 +6,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'dashboardv2_model.dart';
-export 'dashboardv2_model.dart';
+import 'a_b_dashboardv2_model.dart';
+export 'a_b_dashboardv2_model.dart';
 
-class Dashboardv2Widget extends StatefulWidget {
-  const Dashboardv2Widget({super.key});
+class ABDashboardv2Widget extends StatefulWidget {
+  const ABDashboardv2Widget({super.key});
 
   @override
-  State<Dashboardv2Widget> createState() => _Dashboardv2WidgetState();
+  State<ABDashboardv2Widget> createState() => _ABDashboardv2WidgetState();
 }
 
-class _Dashboardv2WidgetState extends State<Dashboardv2Widget> {
-  late Dashboardv2Model _model;
+class _ABDashboardv2WidgetState extends State<ABDashboardv2Widget> {
+  late ABDashboardv2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => Dashboardv2Model());
+    _model = createModel(context, () => ABDashboardv2Model());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -42,17 +43,20 @@ class _Dashboardv2WidgetState extends State<Dashboardv2Widget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(30.0),
+          child: AppBar(
+            backgroundColor: Colors.transparent,
+            automaticallyImplyLeading: false,
+            actions: [],
+            centerTitle: true,
+            elevation: 0.0,
+          ),
+        ),
         body: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                width: 34.0,
-                height: 48.0,
-                decoration: BoxDecoration(
-                  color: Color(0xFF242222),
-                ),
-              ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Row(
@@ -61,24 +65,31 @@ class _Dashboardv2WidgetState extends State<Dashboardv2Widget> {
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: FlutterFlowTheme.of(context).tertiary,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(40.0),
+                        Container(
+                          width: 72.0,
+                          height: 72.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).accent1,
+                            borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 2.0,
+                            ),
                           ),
                           child: Padding(
                             padding: EdgeInsets.all(2.0),
-                            child: Container(
-                              width: 60.0,
-                              height: 60.0,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                              ),
-                              child: Image.asset(
-                                'assets/images/maxresdefault.jpg',
-                                fit: BoxFit.fitHeight,
+                            child: AuthUserStreamWidget(
+                              builder: (context) => ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.network(
+                                  valueOrDefault<String>(
+                                    currentUserPhoto,
+                                    'https://www.vecteezy.com/free-png/default-profile-picture',
+                                  ),
+                                  width: 44.0,
+                                  height: 44.0,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
@@ -110,18 +121,18 @@ class _Dashboardv2WidgetState extends State<Dashboardv2Widget> {
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     4.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'jas53fi1' /* Amr */,
+                                child: AuthUserStreamWidget(
+                                  builder: (context) => Text(
+                                    currentUserDisplayName,
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .override(
-                                        fontFamily: 'Lexend',
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        letterSpacing: 0.0,
-                                      ),
                                 ),
                               ),
                             ],
@@ -203,7 +214,7 @@ class _Dashboardv2WidgetState extends State<Dashboardv2Widget> {
                             children: [
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'sckjudco' /* Cashback Balance */,
+                                  'sckjudco' /* Cashback Balance (last 6 hours... */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

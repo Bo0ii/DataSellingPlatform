@@ -112,31 +112,29 @@ class _AAddDevice2WidgetState extends State<AAddDevice2Widget> {
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
-                                      children: [],
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'i8hl2uua' /* Add Devices */,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .displaySmall
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 20.0, 8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'i8hl2uua' /* Creat A Device */,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .displaySmall
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                          ),
-                                        ],
+                                        children: [],
                                       ),
                                     ),
                                     Padding(
@@ -387,7 +385,7 @@ class _AAddDevice2WidgetState extends State<AAddDevice2Widget> {
                         );
                       },
                       text: FFLocalizations.of(context).getText(
-                        'ypt7b97g' /* Create Your Device */,
+                        'ypt7b97g' /* Add devices */,
                       ),
                       options: FFButtonOptions(
                         width: 200.0,

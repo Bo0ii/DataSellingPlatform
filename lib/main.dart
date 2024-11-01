@@ -1,3 +1,4 @@
+import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,13 @@ void main() async {
 
   await FlutterFlowTheme.initialize();
 
-  runApp(MyApp());
+  final appState = FFAppState(); // Initialize FFAppState
+  await appState.initializePersistedState();
+
+  runApp(ChangeNotifierProvider(
+    create: (context) => appState,
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -92,6 +99,8 @@ class _MyAppState extends State<MyApp> {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
+        FallbackMaterialLocalizationDelegate(),
+        FallbackCupertinoLocalizationDelegate(),
       ],
       locale: _locale,
       supportedLocales: const [
@@ -126,7 +135,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'HomePage';
+  String _currentPageName = 'AB-HomePage-5';
   late Widget? _currentPage;
 
   @override
@@ -139,9 +148,10 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'A-Mywallet-4': AMywallet4Widget(),
+      'AB-dashboardv2': ABDashboardv2Widget(),
+      'AB-Mywallet-4': ABMywallet4Widget(),
       'MY_Budgets': MYBudgetsWidget(),
-      'HomePage': HomePageWidget(),
+      'AB-HomePage-5': ABHomePage5Widget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -160,6 +170,16 @@ class _NavBarPageState extends State<NavBarPage> {
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.dashboard_outlined,
+            ),
+            activeIcon: Icon(
+              Icons.dashboard_rounded,
+            ),
+            label: '',
+            tooltip: '',
+          ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.credit_card,

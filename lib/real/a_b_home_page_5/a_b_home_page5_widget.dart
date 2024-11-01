@@ -11,19 +11,19 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'home_page_model.dart';
-export 'home_page_model.dart';
+import 'a_b_home_page5_model.dart';
+export 'a_b_home_page5_model.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({super.key});
+class ABHomePage5Widget extends StatefulWidget {
+  const ABHomePage5Widget({super.key});
 
   @override
-  State<HomePageWidget> createState() => _HomePageWidgetState();
+  State<ABHomePage5Widget> createState() => _ABHomePage5WidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget>
+class _ABHomePage5WidgetState extends State<ABHomePage5Widget>
     with TickerProviderStateMixin {
-  late HomePageModel _model;
+  late ABHomePage5Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -32,7 +32,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomePageModel());
+    _model = createModel(context, () => ABHomePage5Model());
 
     animationsMap.addAll({
       'rowOnPageLoadAnimation': AnimationInfo(
@@ -96,45 +96,48 @@ class _HomePageWidgetState extends State<HomePageWidget>
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        iconTheme: IconThemeData(color: Colors.black),
-        automaticallyImplyLeading: false,
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-            child: FlutterFlowIconButton(
-              borderRadius: 8.0,
-              buttonSize: 40.0,
-              icon: Icon(
-                Icons.manage_accounts,
-                size: 25.0,
-              ),
-              onPressed: () async {
-                context.pushNamed('MY_profilePageCopy');
-              },
-            ),
-          ),
-          Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
-            child: Padding(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(40.0),
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          iconTheme: IconThemeData(color: Colors.black),
+          automaticallyImplyLeading: false,
+          actions: [
+            Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
               child: FlutterFlowIconButton(
                 borderRadius: 8.0,
                 buttonSize: 40.0,
                 icon: Icon(
-                  Icons.settings,
-                  size: 24.0,
+                  Icons.manage_accounts,
+                  size: 25.0,
                 ),
-                onPressed: () {
-                  print('IconButton pressed ...');
+                onPressed: () async {
+                  context.pushNamed('MY_profilePageCopy');
                 },
               ),
             ),
-          ),
-        ],
-        centerTitle: true,
-        elevation: 0.0,
+            Align(
+              alignment: AlignmentDirectional(0.0, 0.0),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                child: FlutterFlowIconButton(
+                  borderRadius: 8.0,
+                  buttonSize: 40.0,
+                  icon: Icon(
+                    Icons.settings,
+                    size: 24.0,
+                  ),
+                  onPressed: () {
+                    print('IconButton pressed ...');
+                  },
+                ),
+              ),
+            ),
+          ],
+          centerTitle: true,
+          elevation: 0.0,
+        ),
       ),
       body: SafeArea(
         top: true,
@@ -151,25 +154,27 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: FlutterFlowTheme.of(context).tertiary,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(40.0),
+                        Container(
+                          width: 72.0,
+                          height: 72.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).accent1,
+                            borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 2.0,
+                            ),
                           ),
                           child: Padding(
                             padding: EdgeInsets.all(2.0),
                             child: AuthUserStreamWidget(
-                              builder: (context) => Container(
-                                width: 60.0,
-                                height: 60.0,
-                                clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                ),
+                              builder: (context) => ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
                                 child: Image.network(
                                   currentUserPhoto,
-                                  fit: BoxFit.fitHeight,
+                                  width: 44.0,
+                                  height: 44.0,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),
@@ -438,32 +443,41 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     .primaryBackground,
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.swap_horiz_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 40.0,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 8.0, 0.0, 0.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'xvgjrrxl' /* Transfer */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            letterSpacing: 0.0,
-                                          ),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('AB-Mywallet-4');
+                                },
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.swap_horiz_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 40.0,
                                     ),
-                                  ),
-                                ],
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 8.0, 0.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'xvgjrrxl' /* Transfer */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             Container(
@@ -580,14 +594,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: Color(0x6639D2C0),
+                                  color: Color(0xFF679393),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Icon(
-                                      Icons.monetization_on_rounded,
+                                      Icons.device_thermostat_sharp,
                                       color:
                                           FlutterFlowTheme.of(context).tertiary,
                                       size: 24.0,
@@ -607,12 +621,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'ofvhxsfa' /* Go Far Rewards */,
+                                          'ofvhxsfa' /* Ecobee Thermostat */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .headlineSmall
                                             .override(
                                               fontFamily: 'Lexend',
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -627,6 +642,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Lexend',
+                                                fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
@@ -645,7 +661,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'hklf8r1f' /* $50.00 */,
+                                        'hklf8r1f' /* 50.0 AED */,
                                       ),
                                       textAlign: TextAlign.end,
                                       style: FlutterFlowTheme.of(context)
@@ -662,7 +678,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          '73q6q6y1' /* Hello World */,
+                                          '73q6q6y1' /* CashBack */,
                                         ),
                                         textAlign: TextAlign.end,
                                         style: FlutterFlowTheme.of(context)
@@ -700,14 +716,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: Color(0x6639D2C0),
+                                  color: Color(0xFF679393),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Icon(
-                                      Icons.monetization_on_rounded,
+                                      Icons.ac_unit,
                                       color:
                                           FlutterFlowTheme.of(context).tertiary,
                                       size: 24.0,
@@ -727,12 +743,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'k9p5re2m' /* Go Far Rewards */,
+                                          'k9p5re2m' /* WiFi Smart Central Air Conditi... */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .headlineSmall
                                             .override(
                                               fontFamily: 'Lexend',
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -747,6 +764,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Lexend',
+                                                fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
@@ -765,7 +783,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'h59ie3u2' /* $50.00 */,
+                                        'h59ie3u2' /* 74.75 AED */,
                                       ),
                                       textAlign: TextAlign.end,
                                       style: FlutterFlowTheme.of(context)
@@ -782,7 +800,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'rwurpc0e' /* Hello World */,
+                                          'rwurpc0e' /* CashBack */,
                                         ),
                                         textAlign: TextAlign.end,
                                         style: FlutterFlowTheme.of(context)
@@ -820,14 +838,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: Color(0x6639D2C0),
+                                  color: Color(0xFF679393),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Icon(
-                                      Icons.monetization_on_rounded,
+                                      Icons.lightbulb_outlined,
                                       color:
                                           FlutterFlowTheme.of(context).tertiary,
                                       size: 24.0,
@@ -847,12 +865,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          '53unu39h' /* Go Far Rewards */,
+                                          '53unu39h' /* govee lights */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .headlineSmall
                                             .override(
                                               fontFamily: 'Lexend',
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -867,6 +886,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Lexend',
+                                                fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
@@ -885,7 +905,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'bixs3umu' /* $50.00 */,
+                                        'bixs3umu' /* 23.11 AED */,
                                       ),
                                       textAlign: TextAlign.end,
                                       style: FlutterFlowTheme.of(context)
@@ -902,7 +922,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          '5hjeo9qy' /* Hello World */,
+                                          '5hjeo9qy' /* CashBack */,
                                         ),
                                         textAlign: TextAlign.end,
                                         style: FlutterFlowTheme.of(context)
@@ -940,14 +960,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: Color(0x6639D2C0),
+                                  color: Color(0xFF679393),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Icon(
-                                      Icons.monetization_on_rounded,
+                                      Icons.watch_later,
                                       color:
                                           FlutterFlowTheme.of(context).tertiary,
                                       size: 24.0,
@@ -967,12 +987,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'mnqwtivs' /* Go Far Rewards */,
+                                          'mnqwtivs' /* Echo Dot */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .headlineSmall
                                             .override(
                                               fontFamily: 'Lexend',
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -987,6 +1008,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Lexend',
+                                                fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
@@ -1005,7 +1027,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'bdbani8s' /* $50.00 */,
+                                        'bdbani8s' /* 95.25 AED */,
                                       ),
                                       textAlign: TextAlign.end,
                                       style: FlutterFlowTheme.of(context)
@@ -1022,7 +1044,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'yrghq9cb' /* Hello World */,
+                                          'yrghq9cb' /* CashBack */,
                                         ),
                                         textAlign: TextAlign.end,
                                         style: FlutterFlowTheme.of(context)

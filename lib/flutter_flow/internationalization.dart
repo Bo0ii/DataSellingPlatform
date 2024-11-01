@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -78,18 +79,47 @@ class FFLocalizations {
   };
 }
 
+/// Used if the locale is not supported by GlobalMaterialLocalizations.
+class FallbackMaterialLocalizationDelegate
+    extends LocalizationsDelegate<MaterialLocalizations> {
+  const FallbackMaterialLocalizationDelegate();
+
+  @override
+  bool isSupported(Locale locale) => _isSupportedLocale(locale);
+
+  @override
+  Future<MaterialLocalizations> load(Locale locale) async =>
+      SynchronousFuture<MaterialLocalizations>(
+        const DefaultMaterialLocalizations(),
+      );
+
+  @override
+  bool shouldReload(FallbackMaterialLocalizationDelegate old) => false;
+}
+
+/// Used if the locale is not supported by GlobalCupertinoLocalizations.
+class FallbackCupertinoLocalizationDelegate
+    extends LocalizationsDelegate<CupertinoLocalizations> {
+  const FallbackCupertinoLocalizationDelegate();
+
+  @override
+  bool isSupported(Locale locale) => _isSupportedLocale(locale);
+
+  @override
+  Future<CupertinoLocalizations> load(Locale locale) =>
+      SynchronousFuture<CupertinoLocalizations>(
+        const DefaultCupertinoLocalizations(),
+      );
+
+  @override
+  bool shouldReload(FallbackCupertinoLocalizationDelegate old) => false;
+}
+
 class FFLocalizationsDelegate extends LocalizationsDelegate<FFLocalizations> {
   const FFLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) {
-    final language = locale.toString();
-    return FFLocalizations.languages().contains(
-      language.endsWith('_')
-          ? language.substring(0, language.length - 1)
-          : language,
-    );
-  }
+  bool isSupported(Locale locale) => _isSupportedLocale(locale);
 
   @override
   Future<FFLocalizations> load(Locale locale) =>
@@ -105,6 +135,15 @@ Locale createLocale(String language) => language.contains('_')
         scriptCode: language.split('_').last,
       )
     : Locale(language);
+
+bool _isSupportedLocale(Locale locale) {
+  final language = locale.toString();
+  return FFLocalizations.languages().contains(
+    language.endsWith('_')
+        ? language.substring(0, language.length - 1)
+        : language,
+  );
+}
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // loginPage
@@ -169,11 +208,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Sie haben kein Konto?',
       'es': '¿No tienes una cuenta?',
     },
-    '1zqiw31h': {
-      'en': 'Continue as Guest',
-      'ar': 'تواصل كضيف',
-      'de': 'Als Gast fortfahren',
-      'es': 'Continua como invitado',
+    'qio1gdit': {
+      'en': 'Login with Phone number',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
+    'vagw37im': {
+      'en': 'Login',
+      'ar': '',
+      'de': '',
+      'es': '',
     },
     '2bb3vct7': {
       'en': 'Home',
@@ -238,23 +283,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Benutzerkonto erstellen',
       'es': 'Crear una cuenta',
     },
-    '3twynvfz': {
-      'en': 'Login',
-      'ar': 'هل لديك حساب؟',
-      'de': 'Sie haben bereits ein Konto?',
-      'es': '¿Ya tienes una cuenta?',
-    },
     '9ssznj0g': {
       'en': 'Already have an account?',
       'ar': 'هل لديك حساب؟',
       'de': 'Sie haben bereits ein Konto?',
       'es': '¿Ya tienes una cuenta?',
     },
-    '3ugmx2zp': {
-      'en': 'Continue as Guest',
-      'ar': 'تواصل كضيف',
-      'de': 'Als Gast fortfahren',
-      'es': 'Continua como invitado',
+    '3twynvfz': {
+      'en': 'Login',
+      'ar': 'هل لديك حساب؟',
+      'de': 'Sie haben bereits ein Konto?',
+      'es': '¿Ya tienes una cuenta?',
+    },
+    'kjhnq0es': {
+      'en': 'or create account using :',
+      'ar': '',
+      'de': '',
+      'es': '',
     },
     'momge5oj': {
       'en': 'Home',
@@ -265,6 +310,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // A-CompleteProfile-1
   {
+    'iuct2syo': {
+      'en': 'Complete Profile',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
     'r6npjsue': {
       'en': 'Upload a photo for us to easily identify you.',
       'ar': 'قم بتحميل صورة لنا للتعرف عليك بسهولة.',
@@ -332,12 +383,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': '',
       'es': '',
     },
-    'iuct2syo': {
-      'en': 'Complete Profile',
-      'ar': '',
-      'de': '',
-      'es': '',
-    },
     '4k3jnl38': {
       'en': 'Home',
       'ar': 'مسكن',
@@ -390,7 +435,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // A-AddDevice-2
   {
     'i8hl2uua': {
-      'en': 'Creat A Device',
+      'en': 'Add Devices',
       'ar': 'إنشاء الميزانيات',
       'de': 'Erstellen Sie Budgets',
       'es': 'Crear presupuestos',
@@ -432,7 +477,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Sepa dónde están sus presupuestos y cómo se pueden ajustar.',
     },
     'ypt7b97g': {
-      'en': 'Create Your Device',
+      'en': 'Add devices',
       'ar': 'إنشاء ميزانيتك',
       'de': 'Erstellen Sie Ihr Budget',
       'es': 'Crea tu presupuesto',
@@ -453,7 +498,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Crear presupuesto',
     },
     'wih71x51': {
-      'en': 'Amount',
+      'en': 'Device ',
       'ar': 'مقدار',
       'de': 'Höhe',
       'es': 'Monto',
@@ -495,7 +540,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Casa',
     },
   },
-  // A-Mywallet-4
+  // AB-Mywallet-4
   {
     'xn2so8km': {
       'en': 'My Card',
@@ -510,7 +555,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Equilibrio',
     },
     'h3086ma4': {
-      'en': '\$7,630',
+      'en': '7,630 AED',
       'ar': '7630 دولارًا',
       'de': '\$7.630',
       'es': '\$7,630',
@@ -534,7 +579,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Ingreso',
     },
     'axrvkhrv': {
-      'en': '+\$12,402',
+      'en': '+5,123AED',
       'ar': '+ 12402 دولار',
       'de': '+12.402 \$',
       'es': '+\$12,402',
@@ -546,13 +591,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '4,5%',
     },
     'mggh8wu7': {
-      'en': 'Spending',
+      'en': 'Market',
       'ar': 'الإنفاق',
       'de': 'Ausgaben',
       'es': 'Gasto',
     },
     'c5bszisf': {
-      'en': '-\$8,392',
+      'en': '-8,392 AED',
       'ar': '- 8،392 دولارًا',
       'de': '-8.392 \$',
       'es': '-\$8,392',
@@ -576,7 +621,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Transferir',
     },
     'roobc02h': {
-      'en': 'Pause Card',
+      'en': 'Pause All Devices',
       'ar': 'بطاقة وقفة',
       'de': 'Pausenkarte',
       'es': 'Tarjeta de pausa',
@@ -760,57 +805,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'مسكن',
       'de': 'Heim',
       'es': 'Casa',
-    },
-  },
-  // MY_profilePage
-  {
-    'f1bvbey3': {
-      'en': 'My Account',
-      'ar': 'حسابي',
-      'de': 'Mein Konto',
-      'es': 'Mi cuenta',
-    },
-    'i61y9ibx': {
-      'en': 'Edit Profile',
-      'ar': 'تعديل الملف الشخصي',
-      'de': 'Profil bearbeiten',
-      'es': 'Editar perfil',
-    },
-    '03k0vw86': {
-      'en': 'Change Password',
-      'ar': 'تغيير كلمة المرور',
-      'de': 'Kennwort ändern',
-      'es': 'Cambia la contraseña',
-    },
-    '6w6wv95p': {
-      'en': 'Notification Settings',
-      'ar': 'إعدادات الإشعار',
-      'de': 'Benachrichtigungseinstellungen',
-      'es': 'Configuración de las notificaciones',
-    },
-    '9aogde79': {
-      'en': 'Tutorial',
-      'ar': 'درس تعليمي',
-      'de': 'Lernprogramm',
-      'es': 'Tutorial',
-    },
-    'eojlfs66': {
-      'en': 'Privacy Policy',
-      'ar': 'سياسة الخصوصية',
-      'de': 'Datenschutz-Bestimmungen',
-      'es': 'Política de privacidad',
-    },
-    '8d386226': {
-      'en': 'Light Mode',
-      'ar': '',
-      'de': '',
-      'es': '',
-    },
-    '8srr2k0j': {
-      'en': '•',
-      'ar': '•',
-      'de': '•',
-      'es': '•',
     },
   },
   // budgetDetails
@@ -1701,16 +1695,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Casa',
     },
   },
-  // dashboardv2
+  // AB-dashboardv2
   {
     'j3r34h8t': {
       'en': 'Welcome,',
-      'ar': '',
-      'de': '',
-      'es': '',
-    },
-    'jas53fi1': {
-      'en': 'Amr',
       'ar': '',
       'de': '',
       'es': '',
@@ -1734,7 +1722,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
     },
     'sckjudco': {
-      'en': 'Cashback Balance',
+      'en': 'Cashback Balance (last 6 hours)',
       'ar': '',
       'de': '',
       'es': '',
@@ -1824,7 +1812,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
     },
   },
-  // HomePage
+  // AB-HomePage-5
   {
     'wkq4jpvi': {
       'en': 'Welcome,',
@@ -1887,7 +1875,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
     },
     'ofvhxsfa': {
-      'en': 'Go Far Rewards',
+      'en': 'Ecobee Thermostat',
       'ar': '',
       'de': '',
       'es': '',
@@ -1899,19 +1887,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
     },
     'hklf8r1f': {
-      'en': '\$50.00',
+      'en': '50.0 AED',
       'ar': '',
       'de': '',
       'es': '',
     },
     '73q6q6y1': {
-      'en': 'Hello World',
+      'en': 'CashBack',
       'ar': '',
       'de': '',
       'es': '',
     },
     'k9p5re2m': {
-      'en': 'Go Far Rewards',
+      'en': 'WiFi Smart Central Air Conditioner',
       'ar': '',
       'de': '',
       'es': '',
@@ -1923,19 +1911,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
     },
     'h59ie3u2': {
-      'en': '\$50.00',
+      'en': '74.75 AED',
       'ar': '',
       'de': '',
       'es': '',
     },
     'rwurpc0e': {
-      'en': 'Hello World',
+      'en': 'CashBack',
       'ar': '',
       'de': '',
       'es': '',
     },
     '53unu39h': {
-      'en': 'Go Far Rewards',
+      'en': 'govee lights',
       'ar': '',
       'de': '',
       'es': '',
@@ -1947,19 +1935,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
     },
     'bixs3umu': {
-      'en': '\$50.00',
+      'en': '23.11 AED',
       'ar': '',
       'de': '',
       'es': '',
     },
     '5hjeo9qy': {
-      'en': 'Hello World',
+      'en': 'CashBack',
       'ar': '',
       'de': '',
       'es': '',
     },
     'mnqwtivs': {
-      'en': 'Go Far Rewards',
+      'en': 'Echo Dot',
       'ar': '',
       'de': '',
       'es': '',
@@ -1971,13 +1959,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
     },
     'bdbani8s': {
-      'en': '\$50.00',
+      'en': '95.25 AED',
       'ar': '',
       'de': '',
       'es': '',
     },
     'yrghq9cb': {
-      'en': 'Hello World',
+      'en': 'CashBack',
       'ar': '',
       'de': '',
       'es': '',
@@ -2003,8 +1991,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': '',
       'es': '',
     },
+    'x6aflcke': {
+      'en': 'Link Account',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
     'k7hefk3x': {
       'en': 'Edit Profile',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
+    'xhsr7vzb': {
+      'en': 'Notification Settings',
       'ar': '',
       'de': '',
       'es': '',
@@ -2021,14 +2021,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': '',
       'es': '',
     },
-    'xhsr7vzb': {
-      'en': 'Submit a Bug',
-      'ar': '',
-      'de': '',
-      'es': '',
-    },
     'djwoqu71': {
-      'en': 'Submit a Feature Request',
+      'en': 'Privacy Policy',
       'ar': '',
       'de': '',
       'es': '',

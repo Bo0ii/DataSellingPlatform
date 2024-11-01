@@ -6,7 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
-import 'a_mywallet4_widget.dart' show AMywallet4Widget;
+import 'a_b_mywallet4_widget.dart' show ABMywallet4Widget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -15,7 +15,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class AMywallet4Model extends FlutterFlowModel<AMywallet4Widget> {
+class ABMywallet4Model extends FlutterFlowModel<ABMywallet4Widget> {
   @override
   void initState(BuildContext context) {}
 

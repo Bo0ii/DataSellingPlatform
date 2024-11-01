@@ -13,19 +13,19 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'a_mywallet4_model.dart';
-export 'a_mywallet4_model.dart';
+import 'a_b_mywallet4_model.dart';
+export 'a_b_mywallet4_model.dart';
 
-class AMywallet4Widget extends StatefulWidget {
-  const AMywallet4Widget({super.key});
+class ABMywallet4Widget extends StatefulWidget {
+  const ABMywallet4Widget({super.key});
 
   @override
-  State<AMywallet4Widget> createState() => _AMywallet4WidgetState();
+  State<ABMywallet4Widget> createState() => _ABMywallet4WidgetState();
 }
 
-class _AMywallet4WidgetState extends State<AMywallet4Widget>
+class _ABMywallet4WidgetState extends State<ABMywallet4Widget>
     with TickerProviderStateMixin {
-  late AMywallet4Model _model;
+  late ABMywallet4Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -34,7 +34,7 @@ class _AMywallet4WidgetState extends State<AMywallet4Widget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AMywallet4Model());
+    _model = createModel(context, () => ABMywallet4Model());
 
     animationsMap.addAll({
       'rowOnPageLoadAnimation': AnimationInfo(
@@ -185,21 +185,24 @@ class _AMywallet4WidgetState extends State<AMywallet4Widget>
           size: 36.0,
         ),
       ),
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        automaticallyImplyLeading: false,
-        title: Text(
-          FFLocalizations.of(context).getText(
-            'xn2so8km' /* My Card */,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(40.0),
+        child: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          automaticallyImplyLeading: false,
+          title: Text(
+            FFLocalizations.of(context).getText(
+              'xn2so8km' /* My Card */,
+            ),
+            style: FlutterFlowTheme.of(context).displaySmall.override(
+                  fontFamily: 'Lexend',
+                  letterSpacing: 0.0,
+                ),
           ),
-          style: FlutterFlowTheme.of(context).displaySmall.override(
-                fontFamily: 'Lexend',
-                letterSpacing: 0.0,
-              ),
+          actions: [],
+          centerTitle: false,
+          elevation: 0.0,
         ),
-        actions: [],
-        centerTitle: false,
-        elevation: 0.0,
       ),
       body: SafeArea(
         top: true,
@@ -282,7 +285,7 @@ class _AMywallet4WidgetState extends State<AMywallet4Widget>
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'h3086ma4' /* $7,630 */,
+                                    'h3086ma4' /* 7,630 AED */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .displaySmall
@@ -385,7 +388,7 @@ class _AMywallet4WidgetState extends State<AMywallet4Widget>
                                   0.0, 8.0, 0.0, 12.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  'axrvkhrv' /* +$12,402 */,
+                                  'axrvkhrv' /* +5,123AED */,
                                 ),
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
@@ -394,7 +397,7 @@ class _AMywallet4WidgetState extends State<AMywallet4Widget>
                                       fontFamily: 'Lexend',
                                       color:
                                           FlutterFlowTheme.of(context).tertiary,
-                                      fontSize: 32.0,
+                                      fontSize: 27.0,
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -463,7 +466,7 @@ class _AMywallet4WidgetState extends State<AMywallet4Widget>
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                'mggh8wu7' /* Spending */,
+                                'mggh8wu7' /* Market */,
                               ),
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.of(context)
@@ -478,7 +481,7 @@ class _AMywallet4WidgetState extends State<AMywallet4Widget>
                                   0.0, 8.0, 0.0, 12.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  'c5bszisf' /* -$8,392 */,
+                                  'c5bszisf' /* -8,392 AED */,
                                 ),
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
@@ -487,7 +490,7 @@ class _AMywallet4WidgetState extends State<AMywallet4Widget>
                                       fontFamily: 'Lexend',
                                       color:
                                           FlutterFlowTheme.of(context).errorRed,
-                                      fontSize: 32.0,
+                                      fontSize: 27.0,
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -674,7 +677,7 @@ class _AMywallet4WidgetState extends State<AMywallet4Widget>
                                         0.0, 8.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'roobc02h' /* Pause Card */,
+                                        'roobc02h' /* Pause All Devices */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium

@@ -115,16 +115,6 @@ class _MYProfilePageCopyWidgetState extends State<MYProfilePageCopyWidget>
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(50.0),
-            child: AppBar(
-              backgroundColor: Colors.transparent,
-              automaticallyImplyLeading: true,
-              actions: [],
-              centerTitle: true,
-              elevation: 0.0,
-            ),
-          ),
           body: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -349,6 +339,64 @@ class _MYProfilePageCopyWidgetState extends State<MYProfilePageCopyWidget>
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'x6aflcke' /* Link Account */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                            Expanded(
+                              child: Align(
+                                alignment: AlignmentDirectional(1.0, 0.0),
+                                child: Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 20.0,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                child: Container(
+                  width: double.infinity,
+                  height: 70.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 0.0,
+                        color: FlutterFlowTheme.of(context).alternate,
+                        offset: Offset(
+                          0.0,
+                          1.0,
+                        ),
+                      )
+                    ],
+                    shape: BoxShape.rectangle,
+                  ),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -392,6 +440,66 @@ class _MYProfilePageCopyWidgetState extends State<MYProfilePageCopyWidget>
                           ),
                         ],
                       ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                child: Container(
+                  width: double.infinity,
+                  height: 70.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 0.0,
+                        color: FlutterFlowTheme.of(context).alternate,
+                        offset: Offset(
+                          0.0,
+                          1.0,
+                        ),
+                      )
+                    ],
+                    shape: BoxShape.rectangle,
+                  ),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'xhsr7vzb' /* Notification Settings */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                            Expanded(
+                              child: Align(
+                                alignment: AlignmentDirectional(1.0, 0.0),
+                                child: Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 20.0,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -519,67 +627,7 @@ class _MYProfilePageCopyWidgetState extends State<MYProfilePageCopyWidget>
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                'xhsr7vzb' /* Submit a Bug */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyLarge
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                            Expanded(
-                              child: Align(
-                                alignment: AlignmentDirectional(1.0, 0.0),
-                                child: Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 20.0,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 70.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 0.0,
-                        color: FlutterFlowTheme.of(context).alternate,
-                        offset: Offset(
-                          0.0,
-                          1.0,
-                        ),
-                      )
-                    ],
-                    shape: BoxShape.rectangle,
-                  ),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'djwoqu71' /* Submit a Feature Request */,
+                                'djwoqu71' /* Privacy Policy */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge

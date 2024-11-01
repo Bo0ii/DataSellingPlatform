@@ -80,35 +80,38 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          appBar: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-            automaticallyImplyLeading: false,
-            leading: InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                context.pop();
-              },
-              child: Icon(
-                Icons.chevron_left_rounded,
-                color: FlutterFlowTheme.of(context).grayLight,
-                size: 32.0,
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(40.0),
+            child: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+              automaticallyImplyLeading: false,
+              leading: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pop();
+                },
+                child: Icon(
+                  Icons.chevron_left_rounded,
+                  color: FlutterFlowTheme.of(context).grayLight,
+                  size: 32.0,
+                ),
               ),
-            ),
-            title: Text(
-              FFLocalizations.of(context).getText(
-                '4rzqov3y' /* Edit Profile */,
+              title: Text(
+                FFLocalizations.of(context).getText(
+                  '4rzqov3y' /* Edit Profile */,
+                ),
+                style: FlutterFlowTheme.of(context).headlineSmall.override(
+                      fontFamily: 'Lexend',
+                      letterSpacing: 0.0,
+                    ),
               ),
-              style: FlutterFlowTheme.of(context).headlineSmall.override(
-                    fontFamily: 'Lexend',
-                    letterSpacing: 0.0,
-                  ),
+              actions: [],
+              centerTitle: false,
+              elevation: 0.0,
             ),
-            actions: [],
-            centerTitle: false,
-            elevation: 0.0,
           ),
           body: Container(
             width: MediaQuery.sizeOf(context).width * 1.0,
@@ -126,23 +129,25 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
-                    width: 90.0,
-                    height: 90.0,
+                    width: 100.0,
+                    height: 100.0,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).darkBackground,
-                      shape: BoxShape.circle,
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
-                    child: Container(
-                      width: 80.0,
-                      height: 80.0,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                      ),
-                      child: Image.network(
-                        valueOrDefault<String>(
-                          editProfileUsersRecord.photoUrl,
-                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/finance-app-sample-kugwu4/assets/ijvuhvqbvns6/uiAvatar@2x.png',
+                    child: Padding(
+                      padding: EdgeInsets.all(2.0),
+                      child: AuthUserStreamWidget(
+                        builder: (context) => ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.network(
+                            valueOrDefault<String>(
+                              currentUserPhoto,
+                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/finance-app-sample-kugwu4/assets/ijvuhvqbvns6/uiAvatar@2x.png',
+                            ),
+                            width: 44.0,
+                            height: 44.0,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),

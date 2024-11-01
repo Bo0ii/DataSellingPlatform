@@ -253,25 +253,14 @@ class _ACompleteProfile1WidgetState extends State<ACompleteProfile1Widget>
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        automaticallyImplyLeading: false,
-        title: Align(
-          alignment: AlignmentDirectional(-1.0, 0.0),
-          child: Text(
-            FFLocalizations.of(context).getText(
-              'iuct2syo' /* Complete Profile */,
-            ),
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Lexend',
-                  fontSize: 22.0,
-                  letterSpacing: 0.0,
-                ),
-          ),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(40.0),
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          actions: [],
+          elevation: 0.0,
         ),
-        actions: [],
-        centerTitle: true,
-        elevation: 0.0,
       ),
       body: Container(
         width: MediaQuery.sizeOf(context).width * 1.0,
@@ -291,6 +280,19 @@ class _ACompleteProfile1WidgetState extends State<ACompleteProfile1Widget>
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
+                Align(
+                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  child: Text(
+                    FFLocalizations.of(context).getText(
+                      'iuct2syo' /* Complete Profile */,
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Lexend',
+                          fontSize: 22.0,
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                   child: InkWell(
@@ -618,7 +620,7 @@ class _ACompleteProfile1WidgetState extends State<ACompleteProfile1Widget>
                             photoUrl: '',
                           ));
 
-                          context.pushNamed('A-AddDevice-2');
+                          context.pushNamed('AB-HomePage-5');
                         },
                         text: FFLocalizations.of(context).getText(
                           'hbhd3bdt' /* Complete Profile */,

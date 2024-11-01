@@ -129,15 +129,55 @@ class _NotificationsSettingsWidgetState
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: SwitchListTile.adaptive(
+                      value: _model.switchListTileValue1 ??= true,
+                      onChanged: (newValue) async {
+                        safeSetState(
+                            () => _model.switchListTileValue1 = newValue!);
+                      },
+                      title: Text(
+                        FFLocalizations.of(context).getText(
+                          'gjygkr0n' /* Push Notifications */,
+                        ),
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
+                      ),
+                      subtitle: Text(
+                        FFLocalizations.of(context).getText(
+                          '3y3yhxbk' /* Receive Push notifications fro... */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodySmall.override(
+                              fontFamily: 'Lexend',
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                      tileColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      activeColor: FlutterFlowTheme.of(context).tertiary,
+                      activeTrackColor: FlutterFlowTheme.of(context).primary,
+                      dense: false,
+                      controlAffinity: ListTileControlAffinity.trailing,
+                      contentPadding: EdgeInsetsDirectional.fromSTEB(
+                          24.0, 12.0, 24.0, 12.0),
+                    ),
+                  ),
+                ),
+                Material(
+                  color: Colors.transparent,
                   child: SwitchListTile.adaptive(
-                    value: _model.switchListTileValue1 ??= true,
+                    value: _model.switchListTileValue2 ??= true,
                     onChanged: (newValue) async {
                       safeSetState(
-                          () => _model.switchListTileValue1 = newValue!);
+                          () => _model.switchListTileValue2 = newValue!);
                     },
                     title: Text(
                       FFLocalizations.of(context).getText(
-                        'gjygkr0n' /* Push Notifications */,
+                        '1ytebj35' /* Email Notifications */,
                       ),
                       style:
                           FlutterFlowTheme.of(context).headlineSmall.override(
@@ -147,7 +187,7 @@ class _NotificationsSettingsWidgetState
                     ),
                     subtitle: Text(
                       FFLocalizations.of(context).getText(
-                        '3y3yhxbk' /* Receive Push notifications fro... */,
+                        '9lvh5nst' /* Receive email notifications fr... */,
                       ),
                       style: FlutterFlowTheme.of(context).bodySmall.override(
                             fontFamily: 'Lexend',
@@ -163,67 +203,41 @@ class _NotificationsSettingsWidgetState
                         EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
                   ),
                 ),
-                SwitchListTile.adaptive(
-                  value: _model.switchListTileValue2 ??= true,
-                  onChanged: (newValue) async {
-                    safeSetState(() => _model.switchListTileValue2 = newValue!);
-                  },
-                  title: Text(
-                    FFLocalizations.of(context).getText(
-                      '1ytebj35' /* Email Notifications */,
+                Material(
+                  color: Colors.transparent,
+                  child: SwitchListTile.adaptive(
+                    value: _model.switchListTileValue3 ??= true,
+                    onChanged: (newValue) async {
+                      safeSetState(
+                          () => _model.switchListTileValue3 = newValue!);
+                    },
+                    title: Text(
+                      FFLocalizations.of(context).getText(
+                        '69d2j74u' /* Location Services */,
+                      ),
+                      style:
+                          FlutterFlowTheme.of(context).headlineSmall.override(
+                                fontFamily: 'Lexend',
+                                letterSpacing: 0.0,
+                              ),
                     ),
-                    style: FlutterFlowTheme.of(context).headlineSmall.override(
-                          fontFamily: 'Lexend',
-                          letterSpacing: 0.0,
-                        ),
-                  ),
-                  subtitle: Text(
-                    FFLocalizations.of(context).getText(
-                      '9lvh5nst' /* Receive email notifications fr... */,
+                    subtitle: Text(
+                      FFLocalizations.of(context).getText(
+                        '3k8cuv0d' /* Allow us to track your locatio... */,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                            fontFamily: 'Lexend',
+                            letterSpacing: 0.0,
+                          ),
                     ),
-                    style: FlutterFlowTheme.of(context).bodySmall.override(
-                          fontFamily: 'Lexend',
-                          letterSpacing: 0.0,
-                        ),
+                    tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                    activeColor: FlutterFlowTheme.of(context).tertiary,
+                    activeTrackColor: FlutterFlowTheme.of(context).primary,
+                    dense: false,
+                    controlAffinity: ListTileControlAffinity.trailing,
+                    contentPadding:
+                        EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
                   ),
-                  tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  activeColor: FlutterFlowTheme.of(context).tertiary,
-                  activeTrackColor: FlutterFlowTheme.of(context).primary,
-                  dense: false,
-                  controlAffinity: ListTileControlAffinity.trailing,
-                  contentPadding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
-                ),
-                SwitchListTile.adaptive(
-                  value: _model.switchListTileValue3 ??= true,
-                  onChanged: (newValue) async {
-                    safeSetState(() => _model.switchListTileValue3 = newValue!);
-                  },
-                  title: Text(
-                    FFLocalizations.of(context).getText(
-                      '69d2j74u' /* Location Services */,
-                    ),
-                    style: FlutterFlowTheme.of(context).headlineSmall.override(
-                          fontFamily: 'Lexend',
-                          letterSpacing: 0.0,
-                        ),
-                  ),
-                  subtitle: Text(
-                    FFLocalizations.of(context).getText(
-                      '3k8cuv0d' /* Allow us to track your locatio... */,
-                    ),
-                    style: FlutterFlowTheme.of(context).bodySmall.override(
-                          fontFamily: 'Lexend',
-                          letterSpacing: 0.0,
-                        ),
-                  ),
-                  tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  activeColor: FlutterFlowTheme.of(context).tertiary,
-                  activeTrackColor: FlutterFlowTheme.of(context).primary,
-                  dense: false,
-                  controlAffinity: ListTileControlAffinity.trailing,
-                  contentPadding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),

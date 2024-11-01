@@ -195,7 +195,7 @@ class _AAddingDeviceFirst3WidgetState extends State<AAddingDeviceFirst3Widget>
                                     fontWeight: FontWeight.w300,
                                   ),
                               hintText: FFLocalizations.of(context).getText(
-                                'wih71x51' /* Amount */,
+                                'wih71x51' /* Device  */,
                               ),
                               hintStyle: FlutterFlowTheme.of(context)
                                   .displaySmall
@@ -463,7 +463,7 @@ class _AAddingDeviceFirst3WidgetState extends State<AAddingDeviceFirst3Widget>
                                 ),
                               });
 
-                              context.pushNamed('A-Mywallet-4');
+                              context.pushNamed('AB-Mywallet-4');
                             },
                             text: FFLocalizations.of(context).getText(
                               'v2shqq3z' /* Create Budget */,
